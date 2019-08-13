@@ -9,20 +9,65 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  FlatList,
+  Alert
 } from 'react-native';
 
+var REQUEST_URL =
+  "https://raw.githubusercontent.com/facebook/react-native/0.51-stable/docs/MoviesExample.json";
+
 export default class RNProjectDemo extends Component {
-  render() {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      loaded: false,
+    };
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = () => {
+    fetch(REQUEST_URL).then(response => response.json())
+      .then(responseData => {
+        this.setState({
+          data: this.state.data.concat(responseData.movies),
+          loaded: true
+        });
+      });
+  }
+
+  renderMovie = ({ item }) => {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          Hello World!
-        </Text>
+        <Image
+          source={{ uri: item.posters.thumbnail }}
+          style={styles.thumbnail}
+        />
+        <View style={styles.rightContainer}>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.year}>{item.year}</Text>
+        </View>
       </View>
+    );
+  }
+
+  render() {
+    if (!this.state.loaded) {
+      return <Text>111</Text>;
+    }
+    return (
+      <FlatList
+        data={this.state.data}
+        renderItem={this.renderMovie}
+        style={styles.list}
+        keyExtractor={item => item.id}
+      />
     );
   }
 }
@@ -30,20 +75,30 @@ export default class RNProjectDemo extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF"
   },
-  welcome: {
+  rightContainer: {
+    flex: 1
+  },
+  title: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    marginBottom: 8,
+    textAlign: "center"
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  year: {
+    textAlign: "center"
   },
+  thumbnail: {
+    width: 53,
+    height: 81
+  },
+  list: {
+    paddingTop: 20,
+    backgroundColor: "#F5FCFF"
+  }
 });
 
 AppRegistry.registerComponent('RNProjectDemo', () => RNProjectDemo);
