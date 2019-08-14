@@ -5,7 +5,6 @@ const nearByURL = 'http://jr.ly.com/webapps/loan/market/h5/portal/index?env=inte
 
 class ToiletPage extends Component {
   render() {
-    debugger;
     return (<TWebView url={nearByURL} />);
   }
 }
