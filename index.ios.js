@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import ToiletPage from './ios_views/toiletPage';
-// import Read from './ios_views/read';
+import Read from './ios_views/read';
 // import Setting from './ios_views/setting';
 // import Weather from './ios_views/weather';
 
@@ -26,7 +26,7 @@ export default class RNProjectDemo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'toliet',
+      selectedTab: 'toilet',
     };
   }
 
@@ -36,9 +36,9 @@ export default class RNProjectDemo extends Component {
       case 'toilet':
         view = <ToiletPage ></ToiletPage>;
         break;
-      // case 'forfun':
-      //   view = <Read></Read>;
-      //   break;
+      case 'forfun':
+        view = <Read></Read>;
+        break;
       // case 'setting':
       //   view = <Setting></Setting>
       //   break;
@@ -75,8 +75,7 @@ export default class RNProjectDemo extends Component {
             });
           }}
         >
-          <Text>2222</Text>
-          {/* {this._renderView()} */}
+          {this._renderView()}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           title="天气"
