@@ -78,7 +78,6 @@ class ReadView extends Component {
               style={[{ height: 80 }]}
             ></ActivityIndicator>)
         }
-
       </View>
     );
 

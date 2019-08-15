@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { StyleSheet } from 'react-native-extended-stylesheet';
 import {
-  StyleSheet,
   FlatList,
+  TouchableOpacity,
+  View,
+  Image,
+  Text,
 } from 'react-native';
 import Util from './../util';
 import TWebView from '../webview';
@@ -9,6 +13,27 @@ import TWebView from '../webview';
 class List extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      dataSource: []
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        dataSource: [{
+          id: 1,
+          img: 'http://pic5.40017.cn/01/000/ee/45/rBLkBlsFFWeAasvtAAAObyHg0Zg613.png',
+          title: '房司令',
+          time: '2019-08-12',
+        }, {
+          id: 2,
+          img: 'http://pic5.40017.cn/01/001/ee/44/rBLkBVsFE5uAf74FAAAMOzbDrDg567.png',
+          title: '点点通',
+          time: '2019-08-14',
+        }]
+      });
+    }, 2000);
   }
 
   _showDetail(url, title) {
@@ -23,7 +48,7 @@ class List extends Component {
     });
   }
 
-  renderItem = (rowData) => {
+  renderItem = ({ item: rowData }) => {
     return (
       <TouchableOpacity style={[styles.item, styles.row]} onPress={this._showDetail.bind(this, rowData.url, rowData.title)}>
         <View>
@@ -31,15 +56,20 @@ class List extends Component {
         </View>
         <View style={styles.text}>
           <Text style={styles.title} numberOfLines={1}>{rowData.title}</Text>
-          <Text style={styles.name}>{rowData.time.split("T")[0]} </Text>
+          <Text style={styles.name}>{rowData.time} </Text>
         </View>
       </TouchableOpacity>
     );
   }
 
+  _keyExtractor = (item, index) => item.id;
+
   render() {
+    const { dataSource } = this.state;
     return (
       <FlatList style={styles.container}
+        data={dataSource}
+        keyExtractor={this._keyExtractor}
         renderItem={this.renderItem}
       >
       </FlatList>
@@ -50,6 +80,42 @@ class List extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  sdff: {
+    height: 100,
+    lineHeight: 100,
+  },
+  item: {
+    height: 100,
+    borderTopWidth: Util.pixel,
+    borderBottomWidth: Util.pixel,
+    borderBottomColor: '#ccc',
+    borderTopColor: '#ccc',
+  },
+  row: {
+    flexDirection: 'row'
+  },
+  img: {
+    height: 60,
+    width: 60,
+    marginLeft: 10,
+    marginTop: 5,
+    borderWidth: Util.pixel,
+    borderRadius: 3,
+    borderColor: '#fff'
+  },
+  text: {
+    marginLeft: 7
+  },
+  title: {
+    fontSize: 16,
+    marginTop: 10,
+    width: Util.size.width - 80
+  },
+  name: {
+    fontSize: 14,
+    color: '#ccc',
+    marginTop: 10
   }
 });
 
