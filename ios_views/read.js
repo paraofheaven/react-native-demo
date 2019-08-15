@@ -32,36 +32,21 @@ class ReadView extends Component {
   }
 
   _fetchData(callback) {
-    // var self = this;
-    // Util.get('http://123.57.39.116:3000/data/read?type=config', function (data) {
-    //   if (data.status) {
-    //     let obj = data.data;
-    //     self.setState({
-    //       isShow: true,
-    //       recommendTopic: obj.recommendTopic,
-    //       hotTopic: obj.hotTopic,
-    //       category: obj.category,
-    //       other: obj.other,
-    //       refreshing: false,
-    //     });
-    //   } else {
-    //     alert('服务异常,正在紧急修复,请耐心等待');
-    //   }
-    // }, function (err) {
-    //   alert(err);
-    //   alert('服务异常,正在紧急修复,请耐心等待2');
-    // });
     this.timer = setTimeout(() => {
       this.setState({
         isShow: true,
         refreshing: false,
         topicData: [{
+          title: '房司令',
           img: 'http://pic5.40017.cn/01/000/ee/45/rBLkBlsFFWeAasvtAAAObyHg0Zg613.png',
+          url: 'http://www.ly.com',
         }, {
+          title: '点点',
           img: 'http://pic5.40017.cn/01/001/ee/44/rBLkBVsFE5uAf74FAAAMOzbDrDg567.png',
+          url: 'http://www.baidu.com',
         }],
       });
-    }, 3000);
+    }, 2000);
   }
 
   _onRefresh() {
