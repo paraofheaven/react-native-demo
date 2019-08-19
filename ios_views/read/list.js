@@ -26,11 +26,13 @@ class List extends Component {
           img: 'http://pic5.40017.cn/01/000/ee/45/rBLkBlsFFWeAasvtAAAObyHg0Zg613.png',
           title: '房司令',
           time: '2019-08-12',
+          url: 'https://mtransfer.ulinkcredit.com/balanceapp.html#/guide?popCode=n5n4a2646cmq',
         }, {
           id: 2,
           img: 'http://pic5.40017.cn/01/001/ee/44/rBLkBVsFE5uAf74FAAAMOzbDrDg567.png',
           title: '点点通',
           time: '2019-08-14',
+          url: 'https://bt.songjindaikuan.com/wap/LandingSjdkn?utm_source=s51kaguan6&register_channel=s51kaguan6'
         }]
       });
     }, 2000);

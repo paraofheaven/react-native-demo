@@ -24,7 +24,15 @@ class TWebView extends Component {
   }
 
   render() {
-    const { url, isShowErrorPage, isMargin } = this.state;
+    const { isShowErrorPage, isMargin } = this.state;
+    let url = { uri: this.state.url };
+    if (this.props.isWeather) {
+      url = require('./html/weather.html');
+    }
+    if(this.props.isNearBy){
+      url = require('./html/nearby.html');
+    }
+
     return (
       <View style={styles.container}>
         {isShowErrorPage ? <View style={styles.textView}>
@@ -34,7 +42,7 @@ class TWebView extends Component {
             style={[styles.container, { marginTop: isMargin || -20 }]}
             startInLoadingState
             onError={this._loadError.bind(this)}
-            source={{ uri: url }}>
+            source={url}>
           </WebView>
         }
       </View>
