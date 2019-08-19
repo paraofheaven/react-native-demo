@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native-extended-stylesheet';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import {
   FlatList,
   TouchableOpacity,
@@ -14,7 +14,7 @@ class List extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataSource: []
+      dataSource: [],
     }
   }
 
@@ -48,9 +48,10 @@ class List extends Component {
     });
   }
 
-  renderItem = ({ item: rowData }) => {
+  renderItem = ({ item: rowData, index }) => {
+    const { dataSource } = this.state;
     return (
-      <TouchableOpacity style={[styles.item, styles.row]} onPress={this._showDetail.bind(this, rowData.url, rowData.title)}>
+      <TouchableOpacity style={[styles.item, EStyleSheet.child(styles, 'row', index, dataSource.length)]} onPress={this._showDetail.bind(this, rowData.url, rowData.title)}>
         <View>
           <Image style={styles.img} source={{ uri: rowData.img }} resizeMode="cover" />
         </View>
@@ -67,7 +68,7 @@ class List extends Component {
   render() {
     const { dataSource } = this.state;
     return (
-      <FlatList style={styles.container}
+      <FlatList style={[styles.container, { marginTop: -50 }]}
         data={dataSource}
         keyExtractor={this._keyExtractor}
         renderItem={this.renderItem}
@@ -77,29 +78,27 @@ class List extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   container: {
-    flex: 1
-  },
-  sdff: {
-    height: 100,
-    lineHeight: 100,
+    flex: 1,
+    marginTop: -20,
   },
   item: {
-    height: 100,
-    borderTopWidth: Util.pixel,
+    height: 80,
     borderBottomWidth: Util.pixel,
     borderBottomColor: '#ccc',
-    borderTopColor: '#ccc',
   },
   row: {
     flexDirection: 'row'
+  },
+  'row:last-child': {
+    borderBottomWidth: 0,
   },
   img: {
     height: 60,
     width: 60,
     marginLeft: 10,
-    marginTop: 5,
+    marginTop: 10,
     borderWidth: Util.pixel,
     borderRadius: 3,
     borderColor: '#fff'
@@ -118,5 +117,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   }
 });
+
+EStyleSheet.build({});
 
 module.exports = List;
