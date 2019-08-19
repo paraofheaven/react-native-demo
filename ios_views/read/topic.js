@@ -46,7 +46,7 @@ class Topic extends Component {
     const data0 = data[0];
     const data1 = data[1];
     return (
-      <View>
+      <View style={styles.tj}>
         <View style={styles.tjTitle}>
           <Text style={styles.bigText}>推荐专题</Text>
         </View>
@@ -67,25 +67,29 @@ class Topic extends Component {
 }
 
 const styles = StyleSheet.create({
-  tjTitle: {},
-  row: {
-    flexDirection: 'row'
+  tj: {
+    marginTop: -5,
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: -5,
   },
-  tjTopic: {
-    marginTop: 10
+  tjTitle: {
+
   },
   bigText: {
     fontSize: 17,
     fontWeight: '300',
     marginBottom: 5
   },
+  row: {
+    flexDirection: 'row'
+  },
+  tjTopic: {
+    marginTop: 10
+  },
   tjTopicItem: {
     height: 100,
     flex: 1,
-    borderRadius: 5
-  },
-  img: {
-    height: 100,
     borderRadius: 5
   },
   tjTQ: {
@@ -96,6 +100,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#7D7D81'
   },
+  img: {
+    height: 100, borderRadius: 5
+  }
 });
 
 module.exports = Topic;

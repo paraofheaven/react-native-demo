@@ -11,6 +11,7 @@ import Util from './util';
 
 import Search from './read/search';
 import Topic from './read/topic';
+import Recommend from './read/recommend';
 
 class ReadView extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class ReadView extends Component {
       isShow: false,
       refreshing: false,
       topicData: [],
+      hotTopic: [],
     }
   }
 
@@ -27,7 +29,7 @@ class ReadView extends Component {
     this._fetchData();
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     clearTimeout(this.timer);
   }
 
@@ -38,15 +40,67 @@ class ReadView extends Component {
         refreshing: false,
         topicData: [{
           title: '房司令',
-          img: 'http://pic5.40017.cn/01/000/ee/45/rBLkBlsFFWeAasvtAAAObyHg0Zg613.png',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
           url: 'http://www.ly.com',
         }, {
           title: '点点',
-          img: 'http://pic5.40017.cn/01/001/ee/44/rBLkBVsFE5uAf74FAAAMOzbDrDg567.png',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/ss.png',
           url: 'http://www.baidu.com',
         }],
+        hotTopic: [{
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.ly.com',
+        }, {
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.baidu.com',
+        }, {
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.ly.com',
+        }, {
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.baidu.com',
+        }, {
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.ly.com',
+        }, {
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.baidu.com',
+        }, {
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.ly.com',
+        }, {
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.baidu.com',
+        }],
+        other: [{
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.baidu.com',
+        }, {
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.baidu.com',
+        },
+        {
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.baidu.com',
+        },
+        {
+          title: '如果公司抛弃了你，你将何去何从',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          url: 'http://www.baidu.com',
+        }]
       });
-    }, 2000);
+    }, 1000);
   }
 
   _onRefresh() {
@@ -55,12 +109,13 @@ class ReadView extends Component {
   }
 
   render() {
-    const { refreshing, isShow } = this.state;
+    const { refreshing, isShow, topicData, hotTopic, other } = this.state;
     return (
       <View style={styles.container}>
         <Search navigator={this.props.navigator} />
         {
-          isShow ? (<ScrollView
+          isShow ? (
+          <ScrollView
             refreshControl={
               <RefreshControl
                 refreshing={refreshing}
@@ -69,8 +124,11 @@ class ReadView extends Component {
             }
             style={[styles.container, { paddingTop: 20 }]}
           >
-            <Topic data={this.state.topicData} navigator={this.props.navigator} type="manager"></Topic>
+            <Topic data={topicData} navigator={this.props.navigator} type="manager"></Topic>
             <HairLine></HairLine>
+            <Recommend title="热门推荐" dataSource={hotTopic} navigator={this.props.navigator} />
+            <HairLine></HairLine>
+            <Recommend title="清新一刻" dataSource={other} navigator={this.props.navigator} />
           </ScrollView>) :
             (<ActivityIndicator
               animating={true}

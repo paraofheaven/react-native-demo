@@ -39,7 +39,9 @@ class SettingView extends Component {
     this.props.navigator.push({
       component: Tips,
       title: '服务条款',
-      barTintColor: '#fff'
+      barTintColor: '#fff',
+      navigationBarHidden: false,
+      translucent: false,
     });
   }
 
