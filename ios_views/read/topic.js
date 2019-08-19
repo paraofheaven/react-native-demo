@@ -28,12 +28,14 @@ class Topic extends Component {
     });
   }
 
-  _showList(){
+  _showList() {
     this.props.navigator.push({
       component: List,
       title: '推荐专题',
       barTintColor: '#fff',
-      passProps:{
+      navigationBarHidden: false,
+      translucent: false,
+      passProps: {
         type: 'manager'
       }
     });

@@ -15,13 +15,15 @@ class Search extends Component {
       component: List,
       barTintColor: '#fff',
       title: '互联网资讯',
-      passProps:{
+      passProps: {
         type: 'it'
-      }
+      },
+      navigationBarHidden: false,
+      translucent: false,
     });
   }
 
-  _onChangeText=()=>{
+  _onChangeText = () => {
   }
 
   render() {
@@ -46,12 +48,12 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     height: 35,
-    borderWidth: 2*Util.pixel,
+    borderWidth: 2 * Util.pixel,
     borderColor: '#ccc',
-    borderRadius:3,
-    marginTop:25,
-    paddingLeft:10,
-    fontSize:15
+    borderRadius: 3,
+    marginTop: 25,
+    paddingLeft: 10,
+    fontSize: 15
   }
 });
 

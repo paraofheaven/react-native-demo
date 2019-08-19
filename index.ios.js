@@ -13,7 +13,7 @@ import {
 
 import ToiletPage from './ios_views/toiletPage';
 import Read from './ios_views/read';
-// import Setting from './ios_views/setting';
+import Setting from './ios_views/setting';
 import Weather from './ios_views/weather';
 
 var img1_base64 = 'data:image/png;base64,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JXRFWHRkYXRlOmNyZWF0ZQAyMDE1LTA3LTI1VDIxOjUwOjE1KzA4OjAwwyLYKQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNC0wNi0wOVQxNzozMTo1NCswODowMPhlmTcAAABOdEVYdHNvZnR3YXJlAEltYWdlTWFnaWNrIDYuOC44LTEwIFExNiB4ODZfNjQgMjAxNS0wNy0xOSBodHRwOi8vd3d3LmltYWdlbWFnaWNrLm9yZwUMnDUAAAAYdEVYdFRodW1iOjpEb2N1bWVudDo6UGFnZXMAMaf/uy8AAAAYdEVYdFRodW1iOjpJbWFnZTo6SGVpZ2h0ADUxMo+NU4EAAAAXdEVYdFRodW1iOjpJbWFnZTo6V2lkdGgANTEyHHwD3AAAABl0RVh0VGh1bWI6Ok1pbWV0eXBlAGltYWdlL3BuZz+yVk4AAAAXdEVYdFRodW1iOjpNVGltZQAxNDAyMzA2MzE0BKkgvwAAABN0RVh0VGh1bWI6OlNpemUANy42NktCQr2aH/cAAABadEVYdFRodW1iOjpVUkkAZmlsZTovLy9ob21lL3d3d3Jvb3Qvd3d3LmVhc3lpY29uLm5ldC9jZG4taW1nLmVhc3lpY29uLmNuL3NyYy8xMTY5My8xMTY5MzI2LnBuZ+9YE8gAAAAASUVORK5CYII=';
@@ -39,9 +39,9 @@ export default class RNProjectDemo extends Component {
       case 'forfun':
         view = <Read></Read>;
         break;
-      // case 'setting':
-      //   view = <Setting></Setting>
-      //   break;
+      case 'setting':
+        view = <Setting></Setting>
+        break;
       default:
         view = <Weather></Weather>;
         break;
@@ -51,7 +51,7 @@ export default class RNProjectDemo extends Component {
 
   render() {
     const { selectedTab } = this.state;
-    return(
+    return (
       <TabBarIOS barTintColor="#fff">
         <TabBarIOS.Item
           title="卫生间"
@@ -99,8 +99,7 @@ export default class RNProjectDemo extends Component {
             });
           }}
         >
-          <Text>4444</Text>
-          {/* {this._renderView()} */}
+          {this._renderView()}
         </TabBarIOS.Item>
       </TabBarIOS>
     );

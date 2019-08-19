@@ -70,7 +70,7 @@ class List extends Component {
   render() {
     const { dataSource } = this.state;
     return (
-      <FlatList style={[styles.container, { marginTop: -50 }]}
+      <FlatList style={[styles.container]}
         data={dataSource}
         keyExtractor={this._keyExtractor}
         renderItem={this.renderItem}
@@ -83,7 +83,6 @@ class List extends Component {
 const styles = EStyleSheet.create({
   container: {
     flex: 1,
-    marginTop: -20,
   },
   item: {
     height: 80,
