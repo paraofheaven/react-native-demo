@@ -49,7 +49,7 @@ class ReadView extends Component {
         }],
         hotTopic: [{
           title: '如果公司抛弃了你，你将何去何从',
-          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
+          img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/ss.png',
           url: 'http://www.ly.com',
         }, {
           title: '如果公司抛弃了你，你将何去何从',
