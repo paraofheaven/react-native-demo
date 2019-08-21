@@ -12,6 +12,7 @@ import Util from './util';
 import Search from './read/search';
 import Topic from './read/topic';
 import Recommend from './read/recommend';
+import Category from './read/category';
 
 class ReadView extends Component {
   constructor(props) {
@@ -115,21 +116,23 @@ class ReadView extends Component {
         <Search navigator={this.props.navigator} />
         {
           isShow ? (
-          <ScrollView
-            refreshControl={
-              <RefreshControl
-                refreshing={refreshing}
-                onRefresh={this._onRefresh.bind(this)}
-              ></RefreshControl>
-            }
-            style={[styles.container, { paddingTop: 20 }]}
-          >
-            <Topic data={topicData} navigator={this.props.navigator} type="manager"></Topic>
-            <HairLine></HairLine>
-            <Recommend title="热门推荐" dataSource={hotTopic} navigator={this.props.navigator} />
-            <HairLine></HairLine>
-            <Recommend title="清新一刻" dataSource={other} navigator={this.props.navigator} />
-          </ScrollView>) :
+            <ScrollView
+              refreshControl={
+                <RefreshControl
+                  refreshing={refreshing}
+                  onRefresh={this._onRefresh.bind(this)}
+                />
+              }
+              style={[styles.container, { paddingTop: 20 }]}
+            >
+              <Topic data={topicData} navigator={this.props.navigator} type="manager" />
+              <HairLine />
+              <Recommend title="热门推荐" dataSource={hotTopic} navigator={this.props.navigator} />
+              <HairLine />
+              <Category data={this.state.category} navigator={this.props.navigator} />
+              <HairLine />
+              <Recommend title="清新一刻" dataSource={other} navigator={this.props.navigator} />
+            </ScrollView>) :
             (<ActivityIndicator
               animating={true}
               size="large"
