@@ -24,12 +24,12 @@ class Category extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { dataSource } = this.props;
     let first = [];
     let second = [];
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        const element = data[key];
+    for (const key in dataSource) {
+      if (dataSource.hasOwnProperty(key)) {
+        const element = dataSource[key];
         const Item = (
           <TouchableOpacity style={styles.categoryTopic} key={key} onPress={this._showList.bind(this, element.title, element.code)}>
             <Text style={styles.title1}>{element.text}</Text>
@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
   },
   title1: {
     fontSize: 17,
-    fontWeight: '300'
+    fontWeight: '300',
+    textAlign: 'center',
   }
 });
 
