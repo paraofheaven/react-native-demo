@@ -99,6 +99,19 @@ class ReadView extends Component {
           title: '如果公司抛弃了你，你将何去何从',
           img: 'https://file.40017.cn/css40017cnproduct/jinrong/files/i/baoxian/hybrid/detail/cc-1.png',
           url: 'http://www.baidu.com',
+        }],
+        category: [{
+          text: '互联网',
+          code: 'it',
+        },{
+          text: '散文',
+          code: 'sanwen',
+        },{
+          text: '笑话',
+          code: 'cookies',
+        },{
+          text: '管理',
+          code: 'manager',
         }]
       });
     }, 1000);
@@ -110,7 +123,7 @@ class ReadView extends Component {
   }
 
   render() {
-    const { refreshing, isShow, topicData, hotTopic, other } = this.state;
+    const { refreshing, isShow, topicData, hotTopic, category, other } = this.state;
     return (
       <View style={styles.container}>
         <Search navigator={this.props.navigator} />
@@ -129,7 +142,7 @@ class ReadView extends Component {
               <HairLine />
               <Recommend title="热门推荐" dataSource={hotTopic} navigator={this.props.navigator} />
               <HairLine />
-              <Category data={this.state.category} navigator={this.props.navigator} />
+              <Category dataSource={category} navigator={this.props.navigator} />
               <HairLine />
               <Recommend title="清新一刻" dataSource={other} navigator={this.props.navigator} />
             </ScrollView>) :
