@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import List from './list';
+import Util from '../util';
 
 class Category extends Component {
 
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
     flexShrink: 0,
     flexGrow: 0,
     flexBasis: '50%',
+    borderWidth: Util.pixel,
   },
   title1: {
     fontSize: 17,
