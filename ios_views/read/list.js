@@ -98,8 +98,8 @@ const styles = EStyleSheet.create({
   img: {
     height: 60,
     width: 60,
-    marginLeft: 10,
-    marginTop: 10,
+    marginLeft: 12,
+    marginTop: 12,
     borderWidth: Util.pixel,
     borderRadius: 3,
     borderColor: '#fff'
